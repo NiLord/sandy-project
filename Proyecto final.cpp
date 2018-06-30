@@ -2,6 +2,8 @@
 #include <conio.h>
 #include <windows.h>
 #include <math.h>
+#include <iostream>
+#include <limits>
 int n;
 int e;
 float A, B, C, R, x1, x2;
