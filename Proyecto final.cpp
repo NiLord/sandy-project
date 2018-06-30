@@ -108,8 +108,11 @@ void calcular() {
     } else if (discriminante = 0) {
       x1 = -(B) / (2 * A);
       x2 = 0;
-    } else
-      X1R[e] = x1;
+    } else {
+      x1 = std::numeric_limits<double>::infinity();
+      x2 = std::numeric_limits<double>::infinity();
+    }
+    X1R[e] = x1;
     X2R[e] = x2;
   }
   printf("Calculos realizados, presione enter para volver al menu");
