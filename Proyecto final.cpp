@@ -106,7 +106,7 @@ void calcular() {
 
     if (discriminante > 0) {
       x1 = -(B) + sqrt(discriminante) / (2 * A);
-      x2 = -(B)-sqrt(discriminante) / (2 * A);
+      x2 = -(B) - sqrt(discriminante) / (2 * A);
     } else if (discriminante = 0) {
       x1 = -(B) / (2 * A);
       x2 = 0;
