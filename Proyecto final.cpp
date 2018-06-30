@@ -2,11 +2,13 @@
 #include <conio.h>
 #include <windows.h>
 #include <math.h>
+#include <iostream>
+#include <limits>
 int n;
 int e;
 float A, B, C, R, x1, x2;
-float determinante;
-float Y[5], U[5], O[5], X1R[2], X2R[2];
+float discriminante;
+float vectorA[5], vectorB[5], vectorC[5], X1R[5], X2R[5];
 void menu();
 void introducir();
 void calcular();
@@ -84,9 +86,9 @@ void introducir() {
   for (e = 1; e <= 5; e++) {
     printf("Introducir los valores para la ecuacion %d \n", e);
     scanf("%f %f %f", &A, &B, &C);
-    Y[e] = A;
-    U[e] = B;
-    O[e] = C;
+    vectorA[e] = A;
+    vectorB[e] = B;
+    vectorC[e] = C;
   }
   printf("Datos insertados correctamente, enter para volver al menu principal");
   getch();
@@ -94,20 +96,38 @@ void introducir() {
 
 void calcular() {
   for (e = 1; e <= 5; e++) {
-    R = sqrt((B * B) - (4 * A * C));
-    x1 = -(B) + (R) / (2 * A);
-    x2 = -(B) - (R) / (2 * A);
+    // Por legibilidad del codigo se asigna valores a variables de trabajo
+    A = vectorA[e];
+    B = vectorB[e];
+    C = vectorC[e];
+
+    // Calcular discriminante
+    discriminante = (B * B) - (4 * A * C);
+
+    if (discriminante > 0) {
+      x1 = (-(B) + sqrt(discriminante)) / (2 * A);
+      x2 = (-(B)-sqrt(discriminante)) / (2 * A);
+    } else if (discriminante == 0) {
+      x1 = -(B) / (2 * A);
+      x2 = 0;
+    } else {
+      x1 = std::numeric_limits<double>::infinity();
+      x2 = std::numeric_limits<double>::infinity();
+    }
+
     X1R[e] = x1;
     X2R[e] = x2;
   }
+
   printf("Calculos realizados, presione enter para volver al menu");
   getch();
 }
 
 void imprimir() {
   for (e = 1; e <= 5; e++) {
-    printf("La raiz positiva es:%f \n", x1);
-    printf("La raiz negativa es:%f \n", x2);
+    printf("Solucion para el problema: %d \n \n", e);
+    printf("La raiz positiva es: %f \n", X1R[e]);
+    printf("La raiz negativa es: %f \n \n", X2R[e]);
   }
   getch();
 }
