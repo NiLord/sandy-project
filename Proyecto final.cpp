@@ -8,7 +8,7 @@ int n;
 int e;
 float A, B, C, R, x1, x2;
 float discriminante;
-float vectorA[5], vectorB[5], vectorC[5], X1R[2], X2R[2];
+float vectorA[5], vectorB[5], vectorC[5], X1R[5], X2R[5];
 void menu();
 void introducir();
 void calcular();
@@ -96,7 +96,7 @@ void introducir() {
 
 void calcular() {
   for (e = 1; e <= 5; e++) {
-    // Por legibilidad del codigo se asigna a variables de trabajo
+    // Por legibilidad del codigo se asigna valores a variables de trabajo
     A = vectorA[e];
     B = vectorB[e];
     C = vectorC[e];
@@ -105,18 +105,20 @@ void calcular() {
     discriminante = (B * B) - (4 * A * C);
 
     if (discriminante > 0) {
-      x1 = -(B) + sqrt(discriminante) / (2 * A);
-      x2 = -(B) - sqrt(discriminante) / (2 * A);
-    } else if (discriminante = 0) {
+      x1 = (-(B) + sqrt(discriminante)) / (2 * A);
+      x2 = (-(B)-sqrt(discriminante)) / (2 * A);
+    } else if (discriminante == 0) {
       x1 = -(B) / (2 * A);
       x2 = 0;
     } else {
       x1 = std::numeric_limits<double>::infinity();
       x2 = std::numeric_limits<double>::infinity();
     }
+
     X1R[e] = x1;
     X2R[e] = x2;
   }
+
   printf("Calculos realizados, presione enter para volver al menu");
   getch();
 }
