@@ -84,7 +84,7 @@ void introducir() {
   for (e = 1; e <= 5; e++) {
     printf("Introducir los valores para la ecuacion %d \n", e);
     scanf("%f %f %f", &A, &B, &C);
-	vectorA[e] = A;
+    vectorA[e] = A;
     vectorB[e] = B;
     vectorC[e] = C;
   }
@@ -94,23 +94,22 @@ void introducir() {
 
 void calcular() {
   for (e = 1; e <= 5; e++) {
-  	
-  	// Por legibilidad del codigo se asigna a variables de trabajo
-  	A = vectorA[e];
-  	B = vectorB[e];
-  	C = vectorC[e];
-  	
-  	// Calcular discriminante
-  	discriminante = ( B * B ) - ( 4 * A * C );
-  	
-  	if ( discriminante > 0 ) {
-  		x1 = -(B) + sqrt(discriminante) / (2 * A);
-    	x2 = -(B) - sqrt(discriminante) / (2 * A);
-	} else if ( discriminante = 0 ) {
-		x1 = -(B) / ( 2 * A );
-		x2 = 0;
-	} else  
-    X1R[e] = x1;
+    // Por legibilidad del codigo se asigna a variables de trabajo
+    A = vectorA[e];
+    B = vectorB[e];
+    C = vectorC[e];
+
+    // Calcular discriminante
+    discriminante = (B * B) - (4 * A * C);
+
+    if (discriminante > 0) {
+      x1 = -(B) + sqrt(discriminante) / (2 * A);
+      x2 = -(B)-sqrt(discriminante) / (2 * A);
+    } else if (discriminante = 0) {
+      x1 = -(B) / (2 * A);
+      x2 = 0;
+    } else
+      X1R[e] = x1;
     X2R[e] = x2;
   }
   printf("Calculos realizados, presione enter para volver al menu");
@@ -119,7 +118,7 @@ void calcular() {
 
 void imprimir() {
   for (e = 1; e <= 5; e++) {
-  	printf("Solucion para el problema: %d \n \n", e);
+    printf("Solucion para el problema: %d \n \n", e);
     printf("La raiz positiva es: %f \n", X1R[e]);
     printf("La raiz negativa es: %f \n \n", X2R[e]);
   }
